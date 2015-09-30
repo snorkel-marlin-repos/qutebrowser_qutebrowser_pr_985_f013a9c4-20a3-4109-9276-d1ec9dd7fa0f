@@ -1,0 +1,17 @@
+shallow_clone: true
+version: '{branch}-{build}'
+cache:
+  - C:\projects\qutebrowser\.cache
+build: off
+environment:
+    PYTHON: 'C:\Python34'
+    PYTHONUNBUFFERED: 1
+
+install:
+  - C:\Python27\python -u scripts\dev\ci_install.py
+
+test_script:
+  - C:\Python34\Scripts\tox -e py34
+  - C:\Python34\Scripts\tox -e py34-integration
+  - C:\Python34\Scripts\tox -e unittests-frozen
+  - C:\Python34\Scripts\tox -e pylint
